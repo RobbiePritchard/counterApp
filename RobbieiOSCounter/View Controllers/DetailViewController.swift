@@ -15,6 +15,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     
+    var count = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,12 +29,14 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func incementButtonPress(_ sender: UIButton) {
-
+        count += 1
+        self.countLabel.text = count.description
     }
     
     
     @IBAction func decrementButtonPress(_ sender: UIButton) {
-
+        count -= 1
+        self.countLabel.text = count.description
     }
 
 }
