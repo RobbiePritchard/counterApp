@@ -14,11 +14,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
-    
+    var nameTextField: UITextField!
+
     var count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationSetup()
 
         // Do any additional setup after loading the view.
     }
@@ -27,6 +29,29 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func navigationSetup(){
+        //setup BackButton
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        //setup name Textfield
+        nameTextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 22))
+        nameTextField.text = "Unnamed Counter"
+        nameTextField.font = UIFont.boldSystemFont(ofSize: 19)
+        nameTextField.textColor = .black
+        nameTextField.textAlignment = .center
+        nameTextField.backgroundColor = .clear
+        nameTextField.delegate = self
+        
+        nameTextField.becomeFirstResponder()
+
+        
+        
+        self.navigationItem.titleView = nameTextField
+    }
+    
     
     @IBAction func incementButtonPress(_ sender: UIButton) {
         count += 1
@@ -45,5 +70,11 @@ class DetailViewController: UIViewController {
         }
 
     }
+}
 
+extension DetailViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
