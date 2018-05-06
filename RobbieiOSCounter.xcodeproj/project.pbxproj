@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9465CC48209F4E3E006916D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC47209F4E3E006916D4 /* AppDelegate.swift */; };
-		9465CC4A209F4E3E006916D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC49209F4E3E006916D4 /* ViewController.swift */; };
+		9465CC4A209F4E3E006916D4 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC49209F4E3E006916D4 /* MasterViewController.swift */; };
 		9465CC4D209F4E3E006916D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9465CC4B209F4E3E006916D4 /* Main.storyboard */; };
 		9465CC50209F4E3E006916D4 /* RobbieiOSCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC4E209F4E3E006916D4 /* RobbieiOSCounter.xcdatamodeld */; };
 		9465CC52209F4E42006916D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9465CC51209F4E42006916D4 /* Assets.xcassets */; };
 		9465CC55209F4E42006916D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9465CC53209F4E42006916D4 /* LaunchScreen.storyboard */; };
 		9465CC60209F4E42006916D4 /* RobbieiOSCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC5F209F4E42006916D4 /* RobbieiOSCounterTests.swift */; };
 		9465CC6B209F4E42006916D4 /* RobbieiOSCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC6A209F4E42006916D4 /* RobbieiOSCounterUITests.swift */; };
+		9465CC79209F520B006916D4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC78209F520B006916D4 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* Begin PBXFileReference section */
 		9465CC44209F4E3E006916D4 /* RobbieiOSCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobbieiOSCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9465CC47209F4E3E006916D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9465CC49209F4E3E006916D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9465CC49209F4E3E006916D4 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		9465CC4C209F4E3E006916D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9465CC4F209F4E3E006916D4 /* RobbieiOSCounter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RobbieiOSCounter.xcdatamodel; sourceTree = "<group>"; };
 		9465CC51209F4E42006916D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		9465CC66209F4E42006916D4 /* RobbieiOSCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RobbieiOSCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9465CC6A209F4E42006916D4 /* RobbieiOSCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobbieiOSCounterUITests.swift; sourceTree = "<group>"; };
 		9465CC6C209F4E42006916D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9465CC78209F520B006916D4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				9465CC47209F4E3E006916D4 /* AppDelegate.swift */,
-				9465CC49209F4E3E006916D4 /* ViewController.swift */,
+				9465CC7A209F5218006916D4 /* View Controllers */,
 				9465CC4B209F4E3E006916D4 /* Main.storyboard */,
 				9465CC51209F4E42006916D4 /* Assets.xcassets */,
 				9465CC53209F4E42006916D4 /* LaunchScreen.storyboard */,
@@ -126,6 +128,15 @@
 				9465CC6C209F4E42006916D4 /* Info.plist */,
 			);
 			path = RobbieiOSCounterUITests;
+			sourceTree = "<group>";
+		};
+		9465CC7A209F5218006916D4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9465CC49209F4E3E006916D4 /* MasterViewController.swift */,
+				9465CC78209F520B006916D4 /* DetailViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9465CC4A209F4E3E006916D4 /* ViewController.swift in Sources */,
+				9465CC4A209F4E3E006916D4 /* MasterViewController.swift in Sources */,
 				9465CC50209F4E3E006916D4 /* RobbieiOSCounter.xcdatamodeld in Sources */,
 				9465CC48209F4E3E006916D4 /* AppDelegate.swift in Sources */,
+				9465CC79209F520B006916D4 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
