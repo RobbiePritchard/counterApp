@@ -15,27 +15,46 @@ let detailViewControllerID = "Detail"
 class MasterViewController: UIViewController {
     var counters = [NSManagedObject]()
     @IBOutlet weak var tableView: UITableView!
-    
+    lazy var coreDataManager = CoreDataManager()
+
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        tableView.dataSource = self
+        tableView.delegate = self
+        fetchSavedData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBAction func addButtonPress(_ sender: UIBarButtonItem) {
         let vc = storyboard?.instantiateViewController(withIdentifier: detailViewControllerID) as! DetailViewController
+        vc.parentVC = self
         show(vc,sender: nil)
+    }
+    
+    func fetchSavedData(){
+        self.counters = coreDataManager.fetchSavedData()
     }
     
 }
 
 extension MasterViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Update
+        let vc = storyboard?.instantiateViewController(withIdentifier: detailViewControllerID) as! DetailViewController
+        vc.parentVC = self
+        vc.updating = true
+        vc.counterIndex = indexPath.row
+        show(vc,sender: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return counters.count
     }
