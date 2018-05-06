@@ -15,15 +15,22 @@ let detailViewControllerID = "Detail"
 class MasterViewController: UIViewController {
     var counters = [NSManagedObject]()
     @IBOutlet weak var tableView: UITableView!
-    lazy var coreDataManager = CoreDataManager()
-
+    
+    
+    var coreDataManager = CoreDataManager.shared
+    lazy var networkManager = NetworkManager()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        fetchSavedData()
+        if isFirstLaunch(){
+            pullSampleData()
+        }
+        else{
+            fetchSavedData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,18 +38,73 @@ class MasterViewController: UIViewController {
         tableView.reloadData()
     }
 
+    
+    func fetchSavedData(){
+        self.counters = coreDataManager.fetchSavedData()
+    }
+    
+    func pullSampleData(){
+        
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        networkManager.getSampleData(completion: { (result) in
+            switch result{
+            case let .success(data):
+                for counter in data{
+                    let newCoutner = self.coreDataManager.saveNewCounter(counterName: counter.name, count: counter.count)
+                    self.counters.append(newCoutner)
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                UIViewController.removeSpinner(spinner: sv)
 
+                
+            case let .failure(error):
+                print("Error: \(error)")
+                self.displayAlert(with: error)
+            }
+        })
+    }
+    
+
+    func isFirstLaunch()->Bool{
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
+            //app already launched
+            return false
+        }else{
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            //first time app launced
+            return true
+        }
+    }
+    
+    func displayAlert(with message: String){
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
+    func deleteRecord(at indexPath: IndexPath) {
+        
+        
+        let counterToDelete = self.counters[indexPath.row]
+        self.counters.remove(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        coreDataManager.deleteOne(counter: counterToDelete)
+    }
+    
+    // UI
     @IBAction func addButtonPress(_ sender: UIBarButtonItem) {
         let vc = storyboard?.instantiateViewController(withIdentifier: detailViewControllerID) as! DetailViewController
         vc.parentVC = self
         show(vc,sender: nil)
     }
     
-    func fetchSavedData(){
-        self.counters = coreDataManager.fetchSavedData()
-    }
-    
 }
+
 
 extension MasterViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -67,6 +129,15 @@ extension MasterViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteRecord(at: indexPath)
+        }
+    }
+    
     
 }
+
+
+
 

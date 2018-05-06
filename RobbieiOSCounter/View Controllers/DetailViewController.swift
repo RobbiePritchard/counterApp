@@ -23,7 +23,8 @@ class DetailViewController: UIViewController {
 
     
     //coredata
-    lazy var coreDataManager = CoreDataManager()
+    var coreDataManager = CoreDataManager.shared
+    
     
     
     //if updating

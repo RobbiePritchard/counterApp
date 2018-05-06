@@ -12,6 +12,8 @@ import UIKit
 
 class CoreDataManager{
     
+    static let shared: CoreDataManager = CoreDataManager()
+    
     private lazy var moc: NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
