@@ -35,8 +35,15 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func decrementButtonPress(_ sender: UIButton) {
-        count -= 1
-        self.countLabel.text = count.description
+        if count == 0{
+            //flash red
+            self.countLabel.flashTextColor(from: .black, to: .red, for: 0.2)
+        }
+        else{
+            count -= 1
+            self.countLabel.text = count.description
+        }
+
     }
 
 }

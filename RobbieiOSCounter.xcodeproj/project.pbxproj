@@ -16,6 +16,7 @@
 		9465CC60209F4E42006916D4 /* RobbieiOSCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC5F209F4E42006916D4 /* RobbieiOSCounterTests.swift */; };
 		9465CC6B209F4E42006916D4 /* RobbieiOSCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC6A209F4E42006916D4 /* RobbieiOSCounterUITests.swift */; };
 		9465CC79209F520B006916D4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC78209F520B006916D4 /* DetailViewController.swift */; };
+		9465CC7D209F5586006916D4 /* Extension-UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465CC7C209F5586006916D4 /* Extension-UILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		9465CC6A209F4E42006916D4 /* RobbieiOSCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobbieiOSCounterUITests.swift; sourceTree = "<group>"; };
 		9465CC6C209F4E42006916D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9465CC78209F520B006916D4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9465CC7C209F5586006916D4 /* Extension-UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UILabel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				9465CC47209F4E3E006916D4 /* AppDelegate.swift */,
+				9465CC7B209F5570006916D4 /* Extensions */,
 				9465CC7A209F5218006916D4 /* View Controllers */,
 				9465CC4B209F4E3E006916D4 /* Main.storyboard */,
 				9465CC51209F4E42006916D4 /* Assets.xcassets */,
@@ -137,6 +140,14 @@
 				9465CC78209F520B006916D4 /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9465CC7B209F5570006916D4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9465CC7C209F5586006916D4 /* Extension-UILabel.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9465CC4A209F4E3E006916D4 /* MasterViewController.swift in Sources */,
+				9465CC7D209F5586006916D4 /* Extension-UILabel.swift in Sources */,
 				9465CC50209F4E3E006916D4 /* RobbieiOSCounter.xcdatamodeld in Sources */,
 				9465CC48209F4E3E006916D4 /* AppDelegate.swift in Sources */,
 				9465CC79209F520B006916D4 /* DetailViewController.swift in Sources */,
